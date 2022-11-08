@@ -1,4 +1,4 @@
-# ✨ArquitecturaMVC_patronesBack ✨
+# ✨Arquitectura MVC patrones de Back ✨
 
 ## Conceptos
 - Express para levantar servidores y utilizar routers
