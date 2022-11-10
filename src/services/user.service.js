@@ -7,7 +7,7 @@ constructor() {
   
 }
 init = async () =>{
-   const users = await PersistenceFactory.getPersistence();
+   const {users} = await PersistenceFactory.getPersistence();
    this.userDao = users;
 }
  getUsers = async () => {

@@ -1,17 +1,25 @@
 import config from '../config/config.js';
+import MongoClient from './mongoClient.js';
 const PERSISTENCE = config.app.PERSISTENCE;
 export default class PersistenceFactory {
     static getPersistence = async() => {
         switch (PERSISTENCE) {
             case "MEMORY":
                 let {default:UserDaoMemory} = await import ('./user.dao.js')
-                return new UserDaoMemory();
+                return {
+                    users: new UserDaoMemory()
+                }
             case "FILESYSTEM":
                 let {default:UserDaoFile} = await import ('./usersFile.dao')
-                return new UserDaoFile();
+                return {
+                    users: new UserDaoFile()
+                }
             case "MONGUITO":
-                const connection = mongoose.connect('mongodb+srv://xocignaciodb:mongoatlasdb@cluster0.qe9tcs1.mongodb.net/?retryWrites=true&w=majority ')
-                 return true;      
+                const connection = MongoClient.getInstance();
+                let {default:UserDaoMongo} = await import ('./usersMongo.dao.js');
+                return {
+                    users: new UserDaoMongo()
+                }      
             }
 
     }
