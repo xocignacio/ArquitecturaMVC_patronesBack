@@ -1,8 +1,14 @@
-import  usersDaoArray from "../dao/user.dao.js";
+import PersistenceFactory from "../dao/factory.js";
 
 class UserService {           ////////// capa intermedia de abstraccion
 constructor() {
-    this.userDao = new usersDaoArray();
+   this.userDao;
+   this.init();
+  
+}
+init = async () =>{
+   const users = await PersistenceFactory.getPersistence();
+   this.userDao = users;
 }
  getUsers = async () => {
     return await this.userDao.getAll();
