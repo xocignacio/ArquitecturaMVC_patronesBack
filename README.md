@@ -4,7 +4,7 @@
 - Express para levantar servidores y utilizar routers
 - Motor de plantilla handlebars
 - Multiples persistencias utilizando dao
-- Patron factory 
+- Patron factory con switch
 - En config eligo mi persistencia
 - patron SINGLETON => cuando no quiero tener multiples instancias de una conect => mongoClient
 
